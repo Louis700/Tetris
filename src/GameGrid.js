@@ -22,7 +22,7 @@ class GameGrid {
 	}
 
 	update() {
-		this.fallingPiece.position.add(new Vector(0, this.squareDimensions.y));
+		this.fallingPiece.tryStepDown();
 	}
 
 	setFallingPiece(piece) {
