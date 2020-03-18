@@ -11,8 +11,6 @@ class Piece {
 	}
 
 	draw() {
-		strokeWeight(4);
-		stroke( new Color(200, 100, 255) );
 		fill( new Color(150, 52, 255) );
 
 		for(let y = 0; y < this.skin.length; y++) {
