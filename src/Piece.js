@@ -1,10 +1,10 @@
 "use strict";
 
-const squareSide = 50;
-
 class Piece {
-	constructor(position) {
+	constructor(position, gameGrid=null) {
 		this.position = position;
+		this.gameGrid = gameGrid;
+
 		this.skin = [ [0, 1, 0],
 			      [1, 1, 1],
 			      [0, 0, 0] ];
@@ -15,8 +15,14 @@ class Piece {
 
 		for(let y = 0; y < this.skin.length; y++) {
 			for(let x = 0; x < this.skin[y].length; x++) {
-				if(this.skin[y][x])
-					rect(this.position.x + x*squareSide, this.position.y + y*squareSide, squareSide, squareSide);
+				if(this.skin[y][x] == 1) {
+					let squareDimensions = new Vector(50, 50);
+
+					if(this.gameGrid !== null)
+						squareDimensions = this.gameGrid.squareDimensions;
+
+					rect(this.position.x + x*squareDimensions.x, this.position.y + y*squareDimensions.y, squareDimensions.x, squareDimensions.y);
+				}
 			}
 		}
 	}

@@ -1,16 +1,18 @@
 "use strict"
 
-let piece, gameGrid;
+let gameGrid;
 
 function setup() {
-	piece = new Piece( new Vector(100, 100) );
-	gameGrid = new GameGrid( new Vector(0, 0), new Vector(500, 500), new Vector(10, 10))
+	gameGrid = new GameGrid( new Vector(canvas.width/2 - 210, 10), new Vector(420, 680), new Vector(8, 13));
+
+	gameGrid.setFallingPiece( new Piece(new Vector(0, 0), gameGrid) );
+
+	setInterval(() => gameGrid.update(), 1000);
 }
 
 function loop() {
 	background( new Color(200, 100, 10, 1, ColorType.HSL) );
 
-	gameGrid.draw()
-	piece.draw();
+	gameGrid.draw();
 }
 
