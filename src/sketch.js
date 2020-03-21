@@ -6,6 +6,7 @@ function setup() {
 	gameGrid = new GameGrid( new Vector(canvas.width/2 - 210, 10), new Vector(420, 680), new Vector(8, 13));
 
 	gameGrid.setFallingPiece( new Piece(new Vector(0, 0), gameGrid) );
+	gameGrid.initFallingPiece();
 
 	setInterval(() => gameGrid.update(), 1000);
 }

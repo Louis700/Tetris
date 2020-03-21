@@ -19,7 +19,7 @@ class Piece {
 					let squareDimensions = new Vector(50, 50);
 
 					if(this.gameGrid !== null)
-						squareDimensions = this.gameGrid.squareDimensions;
+						squareDimensions = this.gameGrid.getSquareDimensions();
 
 					rect(this.position.x + x*squareDimensions.x, this.position.y + y*squareDimensions.y, squareDimensions.x, squareDimensions.y);
 				}
@@ -101,15 +101,15 @@ class Piece {
 	}
 
 	stepRight() {
-		this.position.add( new Vector(this.gameGrid.squareDimensions.x, 0));
+		this.position.add( new Vector(this.gameGrid.getSquareDimensions().x, 0));
 	}
 
 	stepLeft() {
-		this.position.subtract( new Vector(this.gameGrid.squareDimensions.x, 0));
+		this.position.subtract( new Vector(this.gameGrid.getSquareDimensions().x, 0));
 	}
 
 	stepDown() {
-		this.position.add( new Vector(0, this.gameGrid.squareDimensions.y) );
+		this.position.add( new Vector(0, this.gameGrid.getSquareDimensions().y) );
 	}
 
 	isWellPlaced() {
@@ -119,10 +119,10 @@ class Piece {
 		if(this.position.x < this.gameGrid.position.x || this.position.y < this.gameGrid.position.y)
 			return false;
 
-		if(this.position.x + this.getNumberOfUsedSkinColumns()*this.gameGrid.squareDimensions.x > this.gameGrid.position.x + this.gameGrid.dimensions.x)
+		if(this.position.x + this.getNumberOfUsedSkinColumns()*this.gameGrid.getSquareDimensions().x > this.gameGrid.position.x + this.gameGrid.getAbsoluteDimensions().x)
 			return false;
 
-		if(this.position.y + this.getNumberOfUsedSkinRows()*this.gameGrid.squareDimensions.y > this.gameGrid.position.y + this.gameGrid.dimensions.y)
+		if(this.position.y + this.getNumberOfUsedSkinRows()*this.gameGrid.getSquareDimensions().y > this.gameGrid.position.y + this.gameGrid.getAbsoluteDimensions().y)
 			return false;
 
 		return true;
